@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COKUDROVONOTES</title>
+    <style>
+        .tabs{
+        display: flex;
+        justify-content: flex-left;
+        background: rgb(0, 150, 255);
+        padding: 10px 10px;
+        }
+        .tab{
+        padding-right: 20px;
+        }
+        .text{
+        color: white;
+        }
+        .name{
+        color: white;
+        background: rgb(0, 100, 255);
+        padding: 10px 10px;
+        }
+        .back{
+        display: flex;
+        justify-content: flex-right;
+        color: white;
+        }
+        .notes{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        }
+        .notesName{
+        display: flex;
+        flex-direction: column;
+        padding-right: 100px;
+        }
+        .notesDescription{
+        display: flex;
+        flex-direction: column;
+        padding: 0px 0px;
+        }
+        .notesLocation{
+        display: flex;
+        flex-direction: column;
+        padding-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="name">
+    <h1>Ваши заметки</h1>
+</div>
+<div class="tabs">
+    <div class="tab">
+        <a href="./map.html">
+            <div class="text">Карта</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <div class="tab">
+        <a href="./notes.html">
+            <div class="text">Заметки</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <div class="tab">
+        <a href="./settings.html">
+            <div class="text">Настройки</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <a href="./index.html">
+        <div class="back">На главную</div>
+    </a>
+</div>
+<div class="notes">
+    <div class="notesName">
+        <h2>Название</h2>
+    {% for n in noteNames %}
+    <h2>{{n}}</h2>
+    {% endfor %}
+    </div>
+    <div class="notesDescription">
+        <h2>Описание</h2>
+    {% for d in noteDescriptions %}
+    <h2>{{d}}</h2>
+    {% endfor %}
+    </div>
+    <div class="notesLocation">
+        <h2>Местонахождение</h2>
+    {% for l in noteLocations %}
+    <h2>{{l}}</h2>
+    {% endfor %}
+    </div>
+</div>
+</body>
+</html>

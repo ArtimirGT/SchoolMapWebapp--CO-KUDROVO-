@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COKUDROVOMAP</title>
+    <style>
+        .tabs{
+        display: flex;
+        justify-content: flex-left;
+        background: rgb(0, 150, 255);
+        padding: 10px 10px;
+        }
+        .tab{
+        padding-right: 20px;
+        }
+        .text{
+        color: white;
+        }
+        .name{
+        color: white;
+        background: rgb(0, 100, 255);
+        padding: 10px 10px;
+        }
+        .back{
+        display: flex;
+        justify-content: flex-right;
+        color: white;
+        }
+        .settings{
+        display: flex;
+        justify-content: flex-left;
+        padding: 10px 10px;
+        }
+    </style>
+</head>
+{% if on_off == 'off' %}
+<body style="background-color: grey">
+{% else %}
+<body style="background-color: white">
+{% endif %}
+<div class="name">
+    <h1>Настройки</h1>
+</div>
+<div class="tabs">
+    <div class="tab">
+        <a href="./map.html">
+            <div class="text">Карта</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <div class="tab">
+        <a href="./notes.html">
+            <div class="text">Заметки</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <div class="tab">
+        <a href="./settings.html">
+            <div class="text">Настройки</div>
+        </a>
+    </div>
+    <div class="tab text">|</div>
+    <a href="./index.html">
+        <div class="back">На главную</div>
+    </a>
+</div>
+<div class="settings">
+    <a class="tab">* Тёмная тема</a>
+    <form method="POST">
+    {% csrf_token %}
+    <!-- Кнопка переключения состояния -->
+    <button type="submit" name="on_off" value="{{ on_off }}">{{ button_text }}</button>
+    </form>
+</div>
+</body>
+</html>
