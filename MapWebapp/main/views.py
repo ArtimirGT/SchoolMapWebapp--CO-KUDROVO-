@@ -3,15 +3,11 @@ from django.shortcuts import render
 from .Database import main
 from .forms import *
 
+userId = 1
+
 noteNames = []
 noteDescriptions = []
 noteLocations = []
-
-notes = main.eventList(1)
-for i in range(len(notes)):
-    noteNames.append(notes[i][3])
-    noteDescriptions.append(notes[i][5])
-    noteLocations.append(notes[i][4])
 
 def mainPage(request):
     data = {
@@ -21,13 +17,19 @@ def mainPage(request):
     return render(request, "main/index.html", data)
 
 def notes(request):
-
     if request.method == 'POST':
         form = newNoteForm(request.POST)
-        noteNames.append(request.POST['name'])
-        noteDescriptions.append(request.POST['description'])
-        noteLocations.append(request.POST['location'])
+        main.createEvent(userId, request.POST['name'], request.POST['description'], request.POST['location'])
 
+    noteNames = []
+    noteDescriptions = []
+    noteLocations = []
+
+    notes = main.eventList(userId)
+    for i in range(len(notes)):
+        noteNames.append(notes[i][3])
+        noteDescriptions.append(notes[i][5])
+        noteLocations.append(notes[i][4])
 
     data = {
         'form': newNoteForm,
