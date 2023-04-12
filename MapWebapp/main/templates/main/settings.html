@@ -64,13 +64,5 @@
         <div class="back">На главную</div>
     </a>
 </div>
-<div class="settings">
-    <a class="tab">* Тёмная тема</a>
-    <form method="POST">
-    {% csrf_token %}
-    <!-- Кнопка переключения состояния -->
-    <button type="submit" name="on_off" value="{{ on_off }}">{{ button_text }}</button>
-    </form>
-</div>
 </body>
 </html>
