@@ -81,6 +81,13 @@
     {% for n in noteNames %}
     <h2>{{n}}</h2>
     {% endfor %}
+        <form method="post">
+        {% csrf_token %}
+        {{form.name}} <br>
+        {{form.description}} <br>
+        {{form.location}} <br>
+        <button type="submit">Новая заметка</button>
+        </form>
     </div>
     <div class="notesDescription">
         <h2>Описание</h2>
@@ -89,7 +96,7 @@
     {% endfor %}
     </div>
     <div class="notesLocation">
-        <h2>Местонахождение</h2>
+        <h2>Местоположение</h2>
     {% for l in noteLocations %}
     <h2>{{l}}</h2>
     {% endfor %}

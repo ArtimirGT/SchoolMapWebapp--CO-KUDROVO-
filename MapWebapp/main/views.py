@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from .Database import main
+from .forms import *
 
 noteNames = []
 noteDescriptions = []
@@ -20,19 +21,22 @@ def mainPage(request):
     return render(request, "main/index.html", data)
 
 def notes(request):
+
+    if request.method == 'POST':
+        form = newNoteForm(request.POST)
+        noteNames.append(request.POST['name'])
+        noteDescriptions.append(request.POST['description'])
+        noteLocations.append(request.POST['location'])
+
+
     data = {
+        'form': newNoteForm,
         'noteNames': noteNames,
         'noteDescriptions': noteDescriptions,
         'noteLocations': noteLocations,
         'darkTheme': 0
     }
     return render(request, "main/notes.html", data)
-
-'''def settings(request):
-    data = {
-        'darkTheme': 0
-    }
-    return render(request, 'main/settings.html', data)'''
 
 def map(request):
     data = {
@@ -41,23 +45,7 @@ def map(request):
     return render(request, 'main/map.html', data)
 
 def settings(request):
-    # Проверяем состояние (включено/выключено)
-    is_on = False
-    if request.method == 'POST':
-        on_off = request.POST.get('on_off', None)
-        if on_off:
-            is_on = (on_off == 'on')
-
-    # Определяем текст на кнопке в соответствии с текущим состоянием
-    if is_on:
-        button_text = 'Выключить'
-    else:
-        button_text = 'Включить'
-
-    # Отображаем кнопку и текущее состояние
-    context = {
-        'is_on': is_on,
-        'on_off': 'on' if not is_on else 'off',
-        'button_text': button_text
+    data = {
+        'darkTheme': 0
     }
-    return render(request, 'main/settings.html', context=context)
+    return render(request, 'main/settings.html')
