@@ -81,7 +81,7 @@ exec DeleteEventById 1
 exec UpdateEventNameById
 exec UpdateEventLocationById
 exec UpdateEventDescriptionById
-exec GetAllEventsByUserId
+exec GetAllEventsByUserId 1
 
 --TESTS
 
