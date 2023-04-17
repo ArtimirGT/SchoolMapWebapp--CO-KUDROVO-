@@ -17,3 +17,9 @@ class newNoteForm(ModelForm):
                 'placeholder': 'Местоположение'
             })
         }
+
+class noteDeletingForm(ModelForm):
+    class Meta:
+        model = noteDeleting
+        fields = []
+        widgets = {}

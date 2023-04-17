@@ -16,8 +16,8 @@ CREATE TABLE [EVENT]
 [Id] int primary key identity,
 [UserId] int,
 [Name] nvarchar(30),
-[Location] nvarchar(30),
 [Description] nvarchar(255),
+[Location] nvarchar(30),
 [IsSchool] bit
 )
 
@@ -76,8 +76,8 @@ exec DoneTaskById
 exec GetTasksBySheduleId
 
 --EVENT procedures
-exec CreateEvent 1, 'Free day', 'Home', 'Just a free day, I can do nothing today', 0
-exec DeleteEventById 1
+exec CreateEvent 1, 'Free day', 'Just a free day, I can do nothing today', 'Home', 0
+exec DeleteEventById 
 exec UpdateEventNameById
 exec UpdateEventLocationById
 exec UpdateEventDescriptionById
@@ -92,8 +92,8 @@ Values
 
 INSERT [EVENT]
 Values
-(1, 'Usual day', 'Doma', '', 0),
-(1, 'School day', 'School', 'Ususal lessons', 1),
+(1, 'Usual day', 'hafhaldfklad', 'Doma', 0),
+(1, 'School day', 'Lessons', 'School', 1),
 (2, 'Hru hru', 'saray', 'pohrukat', 0)
 
 INSERT [DAYOFWEEK]

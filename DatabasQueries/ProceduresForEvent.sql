@@ -53,7 +53,7 @@ go
 CREATE PROCEDURE GetAllEventsByUserId
 @Id int
 as
-select  U.[Id], U.[Name], E.[Id] as EventId, E.[Name] as EventName, E.[Location], E.[Description], E.[IsSchool] from [EVENT] as E
+select  U.[Id], U.[Name], E.[Id] as EventId, E.[Name] as EventName, E.[Description], E.[Location], E.[IsSchool] from [EVENT] as E
 inner join [User] as U on U.[Id]=E.[UserId]
 WHERE E.[UserId]=@Id
 

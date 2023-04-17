@@ -26,3 +26,13 @@ def createEvent(UserId, Name, Description, Location):
 
     connection.commit()
     connection.close()
+
+def deleteEvent(EventId):
+    connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=KARTA'
+    connection = pyodbc.connect(connection_string)
+    cursor = connection.cursor()
+
+    cursor.execute(f"DeleteEventById {EventId}")
+
+    connection.commit()
+    connection.close()
