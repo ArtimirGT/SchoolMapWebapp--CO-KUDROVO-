@@ -8,6 +8,6 @@ urlpatterns = [
     path('settings.html', views.settings),
     path('map.html', views.map),
     path('index.html', views.mainPage),
-    path('deleteNote', views.deleteNote, name='deleteNote'),
-    path('newNote', views.notes, name='newNote')
+    path('newNote', views.createNote, name='newNote'),
+    path('deleteNote', views.deleteNote, name='deleteNote')
 ]

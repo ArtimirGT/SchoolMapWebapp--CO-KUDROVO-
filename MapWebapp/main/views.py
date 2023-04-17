@@ -17,6 +17,17 @@ def mainPage(request):
     }
     return render(request, "main/index.html", data)
 
+def createNote(request):
+
+    if request.method == 'POST':
+        form = newNoteForm(request.POST)
+        if form.is_valid():
+            main.createEvent(userId, request.POST['name'], request.POST['description'], request.POST['location'])
+
+    data = notesData()
+
+    return render(request, "main/notes.html", data)
+
 def deleteNote(request):
 
     if request.method == 'POST':
@@ -25,6 +36,11 @@ def deleteNote(request):
             EventId = request.POST.get('value')
             main.deleteEvent(EventId)
 
+    data = notesData()
+
+    return render(request, "main/notes.html", data)
+
+def notesData():
     noteNames = []
     noteDescriptions = []
     noteLocations = []
@@ -45,14 +61,9 @@ def deleteNote(request):
         'noteIds': noteIds,
         'darkTheme': 0
     }
-
-    return render(request, "main/notes.html", data)
+    return data
 
 def notes(request):
-    if request.method == 'POST':
-        form = newNoteForm(request.POST)
-        if form.is_valid():
-            main.createEvent(userId, request.POST['name'], request.POST['description'], request.POST['location'])
 
     noteNames = []
     noteDescriptions = []
