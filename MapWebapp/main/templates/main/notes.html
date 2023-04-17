@@ -86,7 +86,7 @@
     {% for n in noteNames %}
     <h2>{{n}}</h2>
     {% endfor %}
-        <form method="post">
+        <form method="post" action="newNote">
         {% csrf_token %}
         {{form.name}} <br>
         {{form.description}} <br>

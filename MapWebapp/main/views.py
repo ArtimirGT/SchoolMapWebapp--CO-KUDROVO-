@@ -19,6 +19,12 @@ def mainPage(request):
 
 def deleteNote(request):
 
+    if request.method == 'POST':
+        form = noteDeletingForm(request.POST)
+        if form.is_valid():
+            EventId = request.POST.get('value')
+            main.deleteEvent(EventId)
+
     noteNames = []
     noteDescriptions = []
     noteLocations = []
@@ -39,12 +45,6 @@ def deleteNote(request):
         'noteIds': noteIds,
         'darkTheme': 0
     }
-
-    if request.method == 'POST':
-        form = noteDeletingForm(request.POST)
-        if form.is_valid():
-            EventId = request.POST.get('value')
-            main.deleteEvent(EventId)
 
     return render(request, "main/notes.html", data)
 
