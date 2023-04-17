@@ -7,5 +7,6 @@ urlpatterns = [
     path('notes.html', views.notes),
     path('settings.html', views.settings),
     path('map.html', views.map),
-    path('index.html', views.mainPage)
+    path('index.html', views.mainPage),
+    path('deleteNote', views.deleteNote, name='deleteNote')
 ]

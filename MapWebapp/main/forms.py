@@ -1,5 +1,5 @@
 from .models import *
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, forms
 
 class newNoteForm(ModelForm):
     class Meta:
@@ -18,8 +18,5 @@ class newNoteForm(ModelForm):
             })
         }
 
-class noteDeletingForm(ModelForm):
-    class Meta:
-        model = noteDeleting
-        fields = []
-        widgets = {}
+class noteDeletingForm(forms.Form):
+    pass

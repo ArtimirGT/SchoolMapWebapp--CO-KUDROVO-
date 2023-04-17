@@ -77,7 +77,7 @@ exec GetTasksBySheduleId
 
 --EVENT procedures
 exec CreateEvent 1, 'Free day', 'Just a free day, I can do nothing today', 'Home', 0
-exec DeleteEventById 
+exec DeleteEventById 7
 exec UpdateEventNameById
 exec UpdateEventLocationById
 exec UpdateEventDescriptionById

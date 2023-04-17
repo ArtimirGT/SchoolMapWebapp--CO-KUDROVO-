@@ -109,9 +109,9 @@
     <div class="deleteButtons">
     <h2>Удаление</h2>
     {% for i in noteIds %}
-        <form>
-        <h2>{{deleteForm}}</h2>
-        <h2><button type="button" name="submit" onclick="location.href='{% url '' %}">Удалить {{i}}</button></h2>
+        <form method="post" action="{% url 'deleteNote' %}">
+        {% csrf_token %}
+        <h2><button type="submit" name="value" value="{{i}}">Удалить {{i}}</button></h2>
         </form>
     {% endfor %}
     </div>
