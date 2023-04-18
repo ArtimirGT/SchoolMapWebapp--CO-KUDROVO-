@@ -1,5 +1,5 @@
 from .models import *
-from django.forms import ModelForm, TextInput, forms
+from django.forms import ModelForm, TextInput, forms, HiddenInput
 
 class newNoteForm(ModelForm):
     class Meta:
@@ -20,3 +20,22 @@ class newNoteForm(ModelForm):
 
 class noteDeletingForm(forms.Form):
     pass
+
+class creatingUserForm(ModelForm):
+    class Meta:
+        model = newUser
+        fields = ['name', 'password', 'passwordConfirm']
+
+        widgets = {
+            'name': TextInput(attrs={
+                'placeholder': 'Ваш ник'
+            }),
+            'password': TextInput(attrs={
+                'placeholder': 'Пароль',
+                'tag': HiddenInput
+            }),
+            'passwordConfirm': TextInput(attrs={
+                'placeholder': 'Подтверждение пароля',
+                'tag': HiddenInput
+            })
+        }

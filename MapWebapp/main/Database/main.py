@@ -36,3 +36,14 @@ def deleteEvent(EventId):
 
     connection.commit()
     connection.close()
+
+
+def createUser(nickname, password):
+    connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=KARTA'
+    connection = pyodbc.connect(connection_string)
+    cursor = connection.cursor()
+
+    cursor.execute(f"createUser '{nickname}', '{password}', 0")
+
+    connection.commit()
+    connection.close()

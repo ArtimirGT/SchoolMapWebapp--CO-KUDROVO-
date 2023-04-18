@@ -10,12 +10,41 @@ noteNames = []
 noteDescriptions = []
 noteLocations = []
 
+def userRegister(request):
+
+    if request.method == 'POST':
+        form = creatingUserForm(request.POST)
+        if form.is_valid() and request.POST['password'] == request.POST['passwordConfirm']:
+            main.createUser(request.POST['name'], request.POST['password'])
+
+            data = {
+                'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
+                'darkTheme': 0
+            }
+
+            return render(request, "main/mainPage.html", data)
+
+        else:
+            data = {
+                'form': creatingUserForm,
+                'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
+            }
+            return render(request, "main/index.html", data)
+
+def registerPage(request):
+    data = {
+        'form': creatingUserForm,
+        'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
+    }
+
+    return render(request, "main/index.html", data)
+
 def mainPage(request):
     data = {
         'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
         'darkTheme': 0
     }
-    return render(request, "main/index.html", data)
+    return render(request, "main/mainPage.html", data)
 
 def createNote(request):
 
