@@ -10,6 +10,18 @@ noteNames = []
 noteDescriptions = []
 noteLocations = []
 
+def login(request):
+    if request.method == 'POST':
+        form = loginForm(request.POST)
+        if form.is_valid():
+
+            data = {
+                'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
+                'darkTheme': 0
+            }
+
+            return render(request, "main/mainPage.html", data)
+
 def userRegister(request):
 
     if request.method == 'POST':
@@ -114,7 +126,21 @@ def notes(request):
         'noteIds': noteIds,
         'darkTheme': 0
     }
+    print(notes)
+
     return render(request, "main/notes.html", data)
+
+def Floor1(request):
+    if request.method == 'POST':
+        form = floorChangeForm(request.POST)
+        if form.is_valid():
+            data = {
+                'darkTheme': 0,
+                'floor': 1,
+                'ping': 0
+            }
+
+            return render(request, 'main/map.html', data)
 
 def Floor2(request):
     if request.method == 'POST':
@@ -122,7 +148,8 @@ def Floor2(request):
         if form.is_valid():
             data = {
                 'darkTheme': 0,
-                'floor': 2
+                'floor': 2,
+                'ping': 0
             }
 
             return render(request, 'main/map.html', data)
@@ -133,10 +160,35 @@ def Floor3(request):
         if form.is_valid():
             data = {
                 'darkTheme': 0,
-                'floor': 3
+                'floor': 3,
+                'ping': 0
             }
 
             return render(request, 'main/map.html', data)
+
+def Mediateka(request):
+    if request.method == 'POST':
+        data = {
+            'darkTheme': 0,
+            'floor': 3,
+            'ping': 1,
+            'x': 600,
+            'y': 400
+        }
+
+        return render(request, 'main/map.html', data)
+
+def cab4201(request):
+    if request.method == 'POST':
+        data = {
+            'darkTheme': 0,
+            'floor': 3,
+            'ping': 1,
+            'x': 1200,
+            'y': 600
+        }
+
+        return render(request, 'main/map.html', data)
 
 def Floor4(request):
     if request.method == 'POST':
@@ -144,7 +196,8 @@ def Floor4(request):
         if form.is_valid():
             data = {
                 'darkTheme': 0,
-                'floor': 4
+                'floor': 4,
+                'ping': 0
             }
 
             return render(request, 'main/map.html', data)
@@ -155,7 +208,8 @@ def map(request):
 
     data = {
         'darkTheme': 0,
-        'floor': floorShowing
+        'floor': floorShowing,
+        'ping': 0
     }
     return render(request, 'main/map.html', data)
 

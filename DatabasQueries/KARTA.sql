@@ -67,6 +67,7 @@ exec DeleteUserById
 exec GetUserList
 exec GetDeletedUserList
 exec FullUserDelete
+exec GetUserByNicknamePassword 'Gleb', 'qwerty123'
 
 -- TASK procedures
 exec CreateTask

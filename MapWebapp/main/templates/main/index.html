@@ -7,7 +7,7 @@
 
     </style>
 </head>
-<body>
+<body style="margin: 0;">
 <div class="name">
     <h1>{{name}}</h1>
 </div>
@@ -17,6 +17,10 @@
     {{form.password}} <br>
     {{form.passwordConfirm}} <br>
     <button type="submit">Зарегистрироваться</button>
+</form>
+<form method="post" action="login">
+{% csrf_token %}
+<button>Войти</button>
 </form>
 </body>
 </html>

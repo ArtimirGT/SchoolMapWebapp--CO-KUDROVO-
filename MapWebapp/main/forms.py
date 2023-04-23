@@ -42,3 +42,6 @@ class creatingUserForm(ModelForm):
 
 class floorChangeForm(forms.Form):
     pass
+
+class loginForm(forms.Form):
+    pass

@@ -11,6 +11,14 @@ VALUES (@UserName, @UserPassword, @IsDeleted)
 
 go
 
+CREATE PROCEDURE GetUserByNicknamePassword
+@UserName nvarchar(30),
+@UserPassword nvarchar(30)
+as
+SELECT * FROM [USER] as U
+WHERE U.[Name] = @UserName and U.[Password] = @UserPassword
+
+go
 
 CREATE PROCEDURE DeleteUserById
 @UserId int
