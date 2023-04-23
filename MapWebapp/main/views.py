@@ -116,9 +116,46 @@ def notes(request):
     }
     return render(request, "main/notes.html", data)
 
+def Floor2(request):
+    if request.method == 'POST':
+        form = floorChangeForm(request.POST)
+        if form.is_valid():
+            data = {
+                'darkTheme': 0,
+                'floor': 2
+            }
+
+            return render(request, 'main/map.html', data)
+
+def Floor3(request):
+    if request.method == 'POST':
+        form = floorChangeForm(request.POST)
+        if form.is_valid():
+            data = {
+                'darkTheme': 0,
+                'floor': 3
+            }
+
+            return render(request, 'main/map.html', data)
+
+def Floor4(request):
+    if request.method == 'POST':
+        form = floorChangeForm(request.POST)
+        if form.is_valid():
+            data = {
+                'darkTheme': 0,
+                'floor': 4
+            }
+
+            return render(request, 'main/map.html', data)
+
 def map(request):
+
+    floorShowing = 4
+
     data = {
-        'darkTheme': 0
+        'darkTheme': 0,
+        'floor': floorShowing
     }
     return render(request, 'main/map.html', data)
 

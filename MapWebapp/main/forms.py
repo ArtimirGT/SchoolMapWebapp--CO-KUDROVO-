@@ -39,3 +39,6 @@ class creatingUserForm(ModelForm):
                 'tag': HiddenInput
             })
         }
+
+class floorChangeForm(forms.Form):
+    pass

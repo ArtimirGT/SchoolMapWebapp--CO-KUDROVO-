@@ -47,3 +47,13 @@ def createUser(nickname, password):
 
     connection.commit()
     connection.close()
+
+def loginUser(nickname, password):
+    connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=KARTA'
+    connection = pyodbc.connect(connection_string)
+    cursor = connection.cursor()
+
+    cursor.execute(f"GetUserByNicknamePassword '{nickname}', '{password}'")
+
+    connection.commit()
+    connection.close()
