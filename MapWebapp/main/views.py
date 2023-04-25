@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from .Database import main
 from .forms import *
+from .Cabinets import cabinetsList
 
 userId = 1
 
@@ -137,7 +138,8 @@ def Floor1(request):
             data = {
                 'darkTheme': 0,
                 'floor': 1,
-                'ping': 0
+                'ping': 0,
+                'cabinets': cabinetsList
             }
 
             return render(request, 'main/map.html', data)
@@ -149,7 +151,8 @@ def Floor2(request):
             data = {
                 'darkTheme': 0,
                 'floor': 2,
-                'ping': 0
+                'ping': 0,
+                'cabinets': cabinetsList
             }
 
             return render(request, 'main/map.html', data)
@@ -161,12 +164,13 @@ def Floor3(request):
             data = {
                 'darkTheme': 0,
                 'floor': 3,
-                'ping': 0
+                'ping': 0,
+                'cabinets': cabinetsList
             }
 
             return render(request, 'main/map.html', data)
 
-def Mediateka(request):
+'''def Mediateka(request):
     if request.method == 'POST':
         data = {
             'darkTheme': 0,
@@ -176,9 +180,9 @@ def Mediateka(request):
             'y': 400
         }
 
-        return render(request, 'main/map.html', data)
+        return render(request, 'main/map.html', data)'''
 
-def cab4201(request):
+'''def cab4201(request):
     if request.method == 'POST':
         data = {
             'darkTheme': 0,
@@ -188,7 +192,7 @@ def cab4201(request):
             'y': 600
         }
 
-        return render(request, 'main/map.html', data)
+        return render(request, 'main/map.html', data)'''
 
 def Floor4(request):
     if request.method == 'POST':
@@ -197,10 +201,25 @@ def Floor4(request):
             data = {
                 'darkTheme': 0,
                 'floor': 4,
-                'ping': 0
+                'ping': 0,
+                'cabinets': cabinetsList
             }
 
             return render(request, 'main/map.html', data)
+
+def ping(request):
+    if request.method == 'POST':
+        print(request.POST)
+        data = {
+            'darkTheme': 0,
+            'floor': cabinetsList[request.POST.get('cab')][0],
+            'ping': 1,
+            'x': cabinetsList[request.POST.get('cab')][1],
+            'y': cabinetsList[request.POST.get('cab')][2],
+            'cabinets': cabinetsList
+        }
+
+        return render(request, 'main/map.html', data)
 
 def map(request):
 
@@ -209,7 +228,8 @@ def map(request):
     data = {
         'darkTheme': 0,
         'floor': floorShowing,
-        'ping': 0
+        'ping': 0,
+        'cabinets': cabinetsList
     }
     return render(request, 'main/map.html', data)
 

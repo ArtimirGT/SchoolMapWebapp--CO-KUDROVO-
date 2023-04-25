@@ -18,9 +18,7 @@ urlpatterns = [
     path('Floor2', views.Floor2, name='Floor2'),
     path('Floor3', views.Floor3, name='Floor3'),
     path('Floor4', views.Floor4, name='Floor4'),
-    #3 этаж
-    path('Mediateka', views.Mediateka, name='Mediateka'),
-    path('cab4201', views.cab4201, name='cab4201')
+    path('ping', views.ping, name='ping')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -47,7 +47,7 @@
 </head>
 <body style="margin: 0;">
 <div class="name">
-    <h1>Карта</h1>
+    <h1>Карта | {{floor}} этаж</h1>
 </div>
 <div class="tabs">
     <div class="tab">
@@ -75,7 +75,15 @@
 {% if floor == 4 %}
     {% load static %}
     <div class="mapImg">
-        <img src="{% static 'main/media/floor4.png' %}" alt="home" />
+        <img src="{% static 'main/media/floor4.png' %}" alt="home" width="1600" height="900" />
+        <div class="mapBtns">
+            {% for c in cabinets %}
+            <form method="post" action="ping">
+                {% csrf_token %}
+                <button type="submit" value="{{c}}" name="cab">{{c}}</button>
+            </form>
+            {% endfor %}
+        </div>
     </div>
     <div class="floorBtns">
         <form method="post" action="Floor1">
@@ -99,16 +107,14 @@
 {% if floor == 3 %}
     {% load static %}
     <div class="mapImg">
-        <img src="{% static 'main/media/floor3.png' %}" alt="home" />
+        <img src="{% static 'main/media/floor3.png' %}" alt="home" width="1600" height="900"/>
         <div class="mapBtns">
-            <form method="post" action="Mediateka">
+            {% for c in cabinets %}
+            <form method="post" action="ping">
                 {% csrf_token %}
-                <button type="submit">Вход в медиатеку</button>
+                <button type="submit" value="{{c}}" name="cab">{{c}}</button>
             </form>
-            <form method="post" action="cab4201">
-                {% csrf_token %}
-                <button type="submit">Кабинет 4.2.01</button>
-            </form>
+            {% endfor %}
         </div>
     </div>
     <div class="floorBtns">
@@ -134,7 +140,15 @@
 
     {% load static %}
     <div class="mapImg">
-        <img src="{% static 'main/media/floor2.png' %}" alt="home" />
+        <img src="{% static 'main/media/floor2.png' %}" alt="home" width="1600" height="900" />
+        <div class="mapBtns">
+            {% for c in cabinets %}
+            <form method="post" action="ping">
+                {% csrf_token %}
+                <button type="submit" value="{{c}}" name="cab">{{c}}</button>
+            </form>
+            {% endfor %}
+        </div>
     </div>
     <div class="floorBtns">
         <form method="post" action="Floor1">
@@ -159,7 +173,15 @@
 
     {% load static %}
     <div class="mapImg">
-        <img src="{% static 'main/media/floor1.png' %}" alt="home" />
+        <img src="{% static 'main/media/floor1.png' %}" alt="home" width="1600" height="900" />
+        <div class="mapBtns">
+            {% for c in cabinets %}
+            <form method="post" action="ping">
+                {% csrf_token %}
+                <button type="submit" value="{{c}}" name="cab">{{c}}</button>
+            </form>
+            {% endfor %}
+        </div>
     </div>
     <div class="floorBtns">
         <form method="post" action="Floor1">

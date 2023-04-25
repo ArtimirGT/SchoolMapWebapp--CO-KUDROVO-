@@ -28,7 +28,8 @@ class creatingUserForm(ModelForm):
 
         widgets = {
             'name': TextInput(attrs={
-                'placeholder': 'Ваш ник'
+                'placeholder': 'Ваш ник',
+
             }),
             'password': TextInput(attrs={
                 'placeholder': 'Пароль',
