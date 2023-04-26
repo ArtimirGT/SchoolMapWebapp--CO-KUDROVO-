@@ -23,6 +23,30 @@ def login(request):
 
             return render(request, "main/mainPage.html", data)
 
+def userLogin(request):
+    if request.method == 'POST':
+        form = loginUserForm(request.POST)
+        if form.is_valid():
+            user = main.loginUser(request.POST['name'], request.POST['password'])
+            if user != []:
+                print(user)
+
+                data = {
+                    'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
+                    'darkTheme': 0
+                }
+
+                return render(request, "main/mainPage.html", data)
+            else:
+                print(user)
+
+                data = {
+                    'regform': creatingUserForm,
+                    'logform': loginUserForm,
+                    'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
+                }
+                return render(request, "main/index.html", data)
+
 def userRegister(request):
 
     if request.method == 'POST':
@@ -39,14 +63,16 @@ def userRegister(request):
 
         else:
             data = {
-                'form': creatingUserForm,
+                'regform': creatingUserForm,
+                'logform': loginUserForm,
                 'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
             }
             return render(request, "main/index.html", data)
 
 def registerPage(request):
     data = {
-        'form': creatingUserForm,
+        'regform': creatingUserForm,
+        'logform': loginUserForm,
         'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
     }
 
@@ -83,51 +109,28 @@ def deleteNote(request):
     return render(request, "main/notes.html", data)
 
 def notesData():
-    noteNames = []
+    '''noteNames = []
     noteDescriptions = []
     noteLocations = []
-    noteIds = []
+    noteIds = []'''
 
     notes = main.eventList(userId)
-    for i in range(len(notes)):
+    '''for i in range(len(notes)):
         noteNames.append(notes[i][3])
         noteDescriptions.append(notes[i][4])
         noteLocations.append(notes[i][5])
-        noteIds.append(notes[i][2])
+        noteIds.append(notes[i][2])'''
 
     data = {
         'form': newNoteForm,
-        'noteNames': noteNames,
-        'noteDescriptions': noteDescriptions,
-        'noteLocations': noteLocations,
-        'noteIds': noteIds,
-        'darkTheme': 0
+        'notes': notes
     }
+    print(notes)
     return data
 
 def notes(request):
 
-    noteNames = []
-    noteDescriptions = []
-    noteLocations = []
-    noteIds = []
-
-    notes = main.eventList(userId)
-    for i in range(len(notes)):
-        noteNames.append(notes[i][3])
-        noteDescriptions.append(notes[i][4])
-        noteLocations.append(notes[i][5])
-        noteIds.append(notes[i][2])
-
-    data = {
-        'form': newNoteForm,
-        'noteNames': noteNames,
-        'noteDescriptions': noteDescriptions,
-        'noteLocations': noteLocations,
-        'noteIds': noteIds,
-        'darkTheme': 0
-    }
-    print(notes)
+    data = notesData()
 
     return render(request, "main/notes.html", data)
 

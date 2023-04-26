@@ -9,3 +9,7 @@ class newUser(models.Model):
     name = models.CharField('Ваш ник', max_length=30)
     password = models.CharField('Пароль', max_length=30)
     passwordConfirm = models.CharField('Подтвердите пароль', max_length=30)
+
+class loginUser(models.Model):
+    name = models.CharField('Ваш ник', max_length=30)
+    password = models.CharField('Пароль', max_length=30)

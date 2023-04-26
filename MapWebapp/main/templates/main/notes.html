@@ -26,30 +26,27 @@
         justify-content: flex-right;
         color: white;
         }
-        .notes{
+        .notesList{
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
+        flex-direction: column;
+        }
+        .note{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         }
         .notesName{
-        display: flex;
-        flex-direction: column;
-        padding-right: 100px;
+        width: 200px;
         }
         .notesDescription{
-        display: flex;
-        flex-direction: column;
-        padding: 0px 0px;
+        width: 800px;
+        word-break: break-all;
         }
         .notesLocation{
-        display: flex;
-        flex-direction: column;
-        padding-left: 100px;
+        width: 600px;
         }
         .deleteButtons{
-        display: flex;
-        flex-direction: column;
-        padding-left: 100px;
+        width: 102px;
         }
     </style>
 </head>
@@ -80,42 +77,39 @@
         <div class="back">На главную</div>
     </a>
 </div>
-<div class="notes">
+<div class="notesList">
+<div class="note">
     <div class="notesName">
         <h2>Название</h2>
-    {% for n in noteNames %}
-    <h2>{{n}}</h2>
+    </div>
+    <div class="notesDescription">
+        <h2>Описание</h2>
+    </div>
+    <div class="notesLocation">
+        <h2>Местоположение</h2>
+    </div>
+    <div class="deleteButtons">
+    <h2>Удаление</h2>
+    </div>
+</div>
+    {% for n in notes %}
+    <div class="note">
+    <div class="notesName">{{n.3}}</div>
+    <div class="notesDescription">{{n.4}}</div>
+    <div class="notesLocation">{{n.5}}</div>
+    <form method="post" action="{% url 'deleteNote' %}" class="deleteButtons">
+        {% csrf_token %}
+        <h2><button type="submit" name="value" value="{{n.2}}">Удалить</button></h2>
+    </form>
+    </div>
     {% endfor %}
-        <form method="post" action="newNote">
+    <form method="post" action="newNote">
         {% csrf_token %}
         {{form.name}} <br>
         {{form.description}} <br>
         {{form.location}} <br>
         <button type="submit">Новая заметка</button>
-            <input type="hidden" value="356" name="cab">
-        </form>
-    </div>
-    <div class="notesDescription">
-        <h2>Описание</h2>
-    {% for d in noteDescriptions %}
-    <h2>{{d}}</h2>
-    {% endfor %}
-    </div>
-    <div class="notesLocation">
-        <h2>Местоположение</h2>
-    {% for l in noteLocations %}
-    <h2>{{l}}</h2>
-    {% endfor %}
-    </div>
-    <div class="deleteButtons">
-    <h2>Удаление</h2>
-    {% for i in noteIds %}
-        <form method="post" action="{% url 'deleteNote' %}">
-        {% csrf_token %}
-        <h2><button type="submit" name="value" value="{{i}}">Удалить {{i}}</button></h2>
-        </form>
-    {% endfor %}
-    </div>
+    </form>
 </div>
 </body>
 </html>

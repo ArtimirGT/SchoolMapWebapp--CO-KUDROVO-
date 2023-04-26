@@ -4,12 +4,12 @@ use [KARTA]
 CREATE PROCEDURE CreateEvent
 @UserId int,
 @EventName nvarchar(30),
-@Location nvarchar(30),
 @EventDescription nvarchar(255),
+@Location nvarchar(30),
 @IsSchool bit
 as
 INSERT [EVENT]
-VALUES (@UserId, @EventName, @Location, @EventDescription, @IsSchool)
+VALUES (@UserId, @EventName, @EventDescription, @Location, @IsSchool)
 
 go
 
@@ -61,3 +61,5 @@ go
 
 exec GetAllEventsByUserId 1
 drop procedure GetAllEventsByUserId
+
+drop procedure CreateEvent

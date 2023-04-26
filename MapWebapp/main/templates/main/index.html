@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <title>COKUDROVOMAP</title>
     <style>
-
+        .reglog{
+        display: flex;
+        flex-direction: row;
+        }
     </style>
 </head>
 <body style="margin: 0;">
 <div class="name">
     <h1>{{name}}</h1>
 </div>
-<form method="post" action="userRegister">
+<div class="reglog">
+    <form method="post" action="userRegister">
     {% csrf_token %}
-    {{form.name}} <br>
-    {{form.password}} <br>
-    {{form.passwordConfirm}} <br>
-    <input>
+    {{regform.name}} <br>
+    {{regform.password}} <br>
+    {{regform.passwordConfirm}} <br>
     <button type="submit">Зарегистрироваться</button>
-</form>
+    </form>
+    <form method="post" action="userLogin">
+    {% csrf_token %}
+    {{logform.name}} <br>
+    {{logform.password}} <br>
+        <button type="submit">Войти</button>
+    </form>
+</div>
 <form method="post" action="login">
 {% csrf_token %}
 <button>Войти</button>

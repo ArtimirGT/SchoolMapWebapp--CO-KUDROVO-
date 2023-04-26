@@ -1,5 +1,5 @@
 from .models import *
-from django.forms import ModelForm, TextInput, forms, HiddenInput
+from django.forms import ModelForm, TextInput, forms
 
 class newNoteForm(ModelForm):
     class Meta:
@@ -32,12 +32,24 @@ class creatingUserForm(ModelForm):
 
             }),
             'password': TextInput(attrs={
-                'placeholder': 'Пароль',
-                'tag': HiddenInput
+                'placeholder': 'Пароль'
             }),
             'passwordConfirm': TextInput(attrs={
-                'placeholder': 'Подтверждение пароля',
-                'tag': HiddenInput
+                'placeholder': 'Подтверждение пароля'
+            })
+        }
+
+class loginUserForm(ModelForm):
+    class Meta:
+        model = loginUser
+        fields = ['name', 'password']
+
+        widgets = {
+            'name': TextInput(attrs={
+                'placeholder': 'Ваш ник'
+            }),
+            'password': TextInput(attrs={
+                'placeholder': 'Пароль'
             })
         }
 

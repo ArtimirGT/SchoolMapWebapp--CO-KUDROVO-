@@ -17,12 +17,12 @@ def eventList(UserId):
 
     return result
 
-def createEvent(UserId, Name, Description, Location):
+def createEvent(UserId, Name, Location, Description):
     connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=KARTA'
     connection = pyodbc.connect(connection_string)
     cursor = connection.cursor()
 
-    cursor.execute(f"CreateEvent {UserId}, '{Name}', '{Description}', '{Location}', 0")
+    cursor.execute(f"CreateEvent {UserId}, '{Name}', '{Location}', '{Description}', 0")
 
     connection.commit()
     connection.close()
@@ -54,6 +54,9 @@ def loginUser(nickname, password):
     cursor = connection.cursor()
 
     cursor.execute(f"GetUserByNicknamePassword '{nickname}', '{password}'")
+    result = cursor.fetchall()
 
     connection.commit()
     connection.close()
+
+    return result

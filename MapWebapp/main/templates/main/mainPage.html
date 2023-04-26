@@ -21,6 +21,10 @@
         background: rgb(0, 100, 255);
         padding: 10px 10px;
         }
+        .schoolImg{
+        display: flex;
+        flex-direction: column;
+        }
     </style>
 </head>
 <body style="margin: 0;">
@@ -44,6 +48,15 @@
         <a href="./settings.html">
             <div class="text">Настройки</div>
         </a>
+    </div>
+</div>
+<div class="schoolImg">
+    {% load static %}
+    <img src="{% static 'main/media/schoolName.png' %}" width="640" height="133"/>
+    <img src="{% static 'main/media/school.png' %}" width="640" height="457"/>
+    <div>
+        <a href="https://educentr-kudrovo.vsevobr.ru/"><h2 style="padding-left: 10px;">Официальный сайт школы</h2></a>
+        <a href="https://e-school.obr.lenreg.ru/authorize/login"><h2 style="padding-left: 10px;">Электронный дневник (гиссоло)</h2></a>
     </div>
 </div>
 </body>

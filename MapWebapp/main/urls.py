@@ -13,6 +13,7 @@ urlpatterns = [
     path('newNote', views.createNote, name='newNote'),
     path('deleteNote', views.deleteNote, name='deleteNote'),
     path('userRegister', views.userRegister, name='userRegister'),
+    path('userLogin', views.userLogin, name='userLogin'),
     path('login', views.login, name='login'),
     path('Floor1', views.Floor1, name='Floor1'),
     path('Floor2', views.Floor2, name='Floor2'),
