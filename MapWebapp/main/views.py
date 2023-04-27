@@ -11,17 +11,6 @@ noteNames = []
 noteDescriptions = []
 noteLocations = []
 
-def login(request):
-    if request.method == 'POST':
-        form = loginForm(request.POST)
-        if form.is_valid():
-
-            data = {
-                'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
-                'darkTheme': 0
-            }
-
-            return render(request, "main/mainPage.html", data)
 
 def userLogin(request):
     if request.method == 'POST':
@@ -43,9 +32,24 @@ def userLogin(request):
                 data = {
                     'regform': creatingUserForm,
                     'logform': loginUserForm,
+                    'userId': user[0],
                     'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"'
                 }
                 return render(request, "main/index.html", data)
+
+
+
+def login(request):
+    if request.method == 'POST':
+        form = loginForm(request.POST)
+        if form.is_valid():
+
+            data = {
+                'name': 'Карта Школы МОБУ СОШ ЦО "Кудрово"',
+                'darkTheme': 0
+            }
+
+            return render(request, "main/mainPage.html", data)
 
 def userRegister(request):
 
